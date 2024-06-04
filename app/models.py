@@ -1,4 +1,4 @@
-from .. import db
+from app import db
 
 class TinhThanhPhoMl(db.Model):
     __tablename__ = 'TinhThanhPho'
@@ -19,3 +19,11 @@ class HuyenQuanMl(db.Model):
 
     def __repr__(self):
         return f'<HuyenQuan {self.TenHuyenQuan}>'
+class QuyHoachMl(db.Model):
+    __tablename__ = 'QuyHoach'
+    
+    QuyHoachID = db.Column(db.Integer, primary_key=True)
+    HuyenQuanID = db.Column(db.Integer, db.ForeignKey('HuyenQuan.HuyenQuanID'), nullable = False)
+    HinhanhQuyHoach =  db.Column(db.String(600), nullable=False)
+    def __repr__(self):
+        return f'<QuyHoach {self.QuyHoachID}>'
